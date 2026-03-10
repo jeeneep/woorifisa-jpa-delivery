@@ -96,9 +96,9 @@ erDiagram
 
 * 즉시 로딩(EAGER)으로 인한 N+1 문제와 불필요한 쿼리 실행을 방지하기 위해, 모든 연관관계(`@ManyToOne`)에 `FetchType.LAZY`를 적용하여 실무적인 성능 최적화 기반을 마련했습니다.
 
-### 4. Fetch Join을 활용한 성능 최적화
-
-* `MemberService.getMemberOrders()` 메서드에서 JPQL의 `join fetch` 문법(`select m from Member m join fetch m.orders`)을 사용하여 회원 조회 시 연관된 주문 정보까지 한 번의 쿼리로 가져오도록 N+1 문제를 해결했습니다.
+### 4. 타입 안정성을 고려한 동적 쿼리 및 성능 최적화
+* EntityGraph를 통한 N+1 문제 해결
+  : MemberService.getMemberOrders()에서 문자열 기반의 Fetch Join 대신 **EntityGraph**를 사용했습니다. 런타임에 동적으로 연관된 orders 정보를 함께 조회하도록 설정하여, 타입 안정성을 확보하면서도 한 번의 쿼리로 연관 데이터를 가져오도록 최적화했습니다.
 
 ### 5. 영속성 전이(Cascade)와 고아 객체(OrphanRemoval) 관리
 
