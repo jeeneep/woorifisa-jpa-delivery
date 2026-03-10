@@ -14,12 +14,14 @@ import lombok.*;
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "menu_id")
     private Long id;
 
     private String name;
     private int price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
     private Store store;
 
     public void confirmStore(Store store) {
@@ -27,6 +29,6 @@ public class Menu {
         store.getMenus().add(this);
     }
 
-    @OneToMany(mappedBy = "menu") // Orders 엔티티에 있는 'menu' 필드명과 일치해야
+    @OneToMany(mappedBy = "menu")
     private List<Orders> orders = new ArrayList<>();
 }
