@@ -1,4 +1,4 @@
-package com.delivery.jpa_delivery.test;
+package com.delivery.jpa_delivery.service;
 
 import com.delivery.jpa_delivery.dto.StoreDTO;
 import com.delivery.jpa_delivery.entity.Store;
