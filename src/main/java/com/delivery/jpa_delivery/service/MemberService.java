@@ -15,7 +15,7 @@ import java.util.List;
 public class MemberService {
 
     private final EntityManagerFactory emf;
-    private final BCryptPasswordEncoder passwordEncoder
+    private final BCryptPasswordEncoder passwordEncoder;
 
     /** 1. 회원 단건 조회 (ID 기반) */
     public Member findOne(Long memberId) {
